@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="lil guy platformer"
+run/main_scene="uid://6x3x6cjvxkks"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,7 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=284
 window/size/viewport_height=160
-window/size/mode=3
+window/size/mode=2
+window/stretch/mode="canvas_items"
 
 [layer_names]
 
