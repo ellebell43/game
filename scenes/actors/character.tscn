@@ -1,29 +1,41 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm2froj38lcf8"]
 
-[ext_resource type="Texture2D" uid="uid://ctce6oa0ituu2" path="res://assets/character/lil-guy.png" id="1_agfs1"]
+[ext_resource type="Texture2D" uid="uid://ctce6oa0ituu2" path="res://assets/character/lil-guy.png" id="1_6dvki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkhd4"]
-atlas = ExtResource("1_agfs1")
+atlas = ExtResource("1_6dvki")
 region = Rect2(1, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrhn5"]
-atlas = ExtResource("1_agfs1")
+atlas = ExtResource("1_6dvki")
 region = Rect2(18, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
-atlas = ExtResource("1_agfs1")
+atlas = ExtResource("1_6dvki")
 region = Rect2(35, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dp8ca"]
-atlas = ExtResource("1_agfs1")
+atlas = ExtResource("1_6dvki")
 region = Rect2(52, 1, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dkjbp"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkhd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my7n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp8ca")
+}],
 "loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"name": &"run",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -40,7 +52,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agfs1"]
@@ -51,10 +63,11 @@ height = 15.0
 radius = 6.0
 
 [node name="Node2D" type="CharacterBody2D"]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dkjbp")
-animation = &"walk"
+animation = &"run"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
