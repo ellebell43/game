@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=4 uid="uid://6x3x6cjvxkks"]
+
+[ext_resource type="PackedScene" uid="uid://cm2froj38lcf8" path="res://scenes/actors/character.tscn" id="1_52kye"]
+[ext_resource type="Texture2D" uid="uid://nwh3taudt7kf" path="res://assets/tiles/grass-tiles.png" id="1_8153q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52kye"]
+texture = ExtResource("1_8153q")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yp2xm"]
+sources/0 = SubResource("TileSetAtlasSource_52kye")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyl1e"]
+size = Vector2(239, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp2xm"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7115g"]
+size = Vector2(20, 127)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_52kye")]
+position = Vector2(133, 97)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAkAAAAAAAAAAAABAAkAAAABAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAHAAAAAAAGAAgAAAAEAAAAAAAHAAgAAAABAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAFAAAAAAAKAAkAAAAGAAAAAAALAAkAAAAAAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_yp2xm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(120, 152)
+shape = SubResource("RectangleShape2D_uyl1e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(136, 136)
+shape = SubResource("RectangleShape2D_yp2xm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-10, 94.5)
+shape = SubResource("RectangleShape2D_7115g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(250, 95)
+shape = SubResource("RectangleShape2D_7115g")
