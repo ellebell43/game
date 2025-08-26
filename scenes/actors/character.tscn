@@ -1,39 +1,62 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm2froj38lcf8"]
+[gd_scene load_steps=18 format=3 uid="uid://cm2froj38lcf8"]
 
 [ext_resource type="Script" uid="uid://dkjeeute7d35b" path="res://scenes/actors/character.gd" id="1_5ry7u"]
-[ext_resource type="Texture2D" uid="uid://ctce6oa0ituu2" path="res://assets/character/lil-guy.png" id="1_6dvki"]
+[ext_resource type="Texture2D" uid="uid://b1hvtwoq0gtvh" path="res://assets/character/lil-guy.png" id="1_6dvki"]
 [ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_a0mrq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ry7u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4oa"]
 atlas = ExtResource("1_6dvki")
+region = Rect2(171, 1, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0mrq"]
+load_path = "res://.godot/imported/lil-guy.png-aefaf8043f3fb5aec24dce92472b6e1e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ry7u"]
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(1, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0mrq"]
-atlas = ExtResource("1_6dvki")
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(86, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uectf"]
-atlas = ExtResource("1_6dvki")
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(154, 1, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rkhd4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vncs"]
 atlas = ExtResource("1_6dvki")
+region = Rect2(69, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa652"]
+atlas = ExtResource("1_6dvki")
+region = Rect2(188, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhd4"]
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(1, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrhn5"]
-atlas = ExtResource("1_6dvki")
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(18, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
-atlas = ExtResource("1_6dvki")
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(35, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dp8ca"]
-atlas = ExtResource("1_6dvki")
+atlas = SubResource("CompressedTexture2D_a0mrq")
 region = Rect2(52, 1, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dkjbp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4oa")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 10.0,
 "texture": SubResource("AtlasTexture_5ry7u")
@@ -50,6 +73,17 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vncs")
+}, {
+"duration": 50000.0,
+"texture": SubResource("AtlasTexture_wa652")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -101,8 +135,7 @@ script = ExtResource("1_5ry7u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dkjbp")
-animation = &"idle"
-frame_progress = 0.266772
+animation = &"jump"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
