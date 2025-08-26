@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm2froj38lcf8"]
+[gd_scene load_steps=14 format=3 uid="uid://cm2froj38lcf8"]
 
 [ext_resource type="Script" uid="uid://dkjeeute7d35b" path="res://scenes/actors/character.gd" id="1_5ry7u"]
 [ext_resource type="Texture2D" uid="uid://ctce6oa0ituu2" path="res://assets/character/lil-guy.png" id="1_6dvki"]
+[ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_a0mrq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ry7u"]
 atlas = ExtResource("1_6dvki")
@@ -96,6 +97,8 @@ radius = 6.0
 collision_mask = 2
 script = ExtResource("1_5ry7u")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dkjbp")
 animation = &"idle"
@@ -109,3 +112,7 @@ shape = SubResource("CapsuleShape2D_agfs1")
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_rkhd4")
+
+[node name="JumpAudioPLayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a0mrq")
+volume_db = 4.952
