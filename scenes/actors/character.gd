@@ -27,10 +27,6 @@ func _ready() -> void:
 	camera.limit_right = cameraLimitRight
 	camera.limit_left = cameraLimitLeft
 
-func _process(delta: float) -> void:
-	if dead:
-		pass
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and not dead:
@@ -92,6 +88,8 @@ func _on_hit_box_body_entered(_body: Node2D) -> void:
 		gameOverPlayer.play()
 		sprite.play("dead")
 		sprite.modulate = Color(1, 0, 0)
+		camera.position = position
+		camera.top_level = true
 		
 	dead = true
 	
