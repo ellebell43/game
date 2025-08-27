@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cm2froj38lcf8"]
+[gd_scene load_steps=36 format=3 uid="uid://cm2froj38lcf8"]
 
 [ext_resource type="Script" uid="uid://dkjeeute7d35b" path="res://scenes/actors/character.gd" id="1_5ry7u"]
 [ext_resource type="Texture2D" uid="uid://b1hvtwoq0gtvh" path="res://assets/character/lil-guy.png" id="1_6dvki"]
@@ -7,6 +7,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_6eyh6"]
 atlas = ExtResource("1_6dvki")
 region = Rect2(69, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2fly"]
+atlas = ExtResource("1_6dvki")
+region = Rect2(137, 1, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov4oa"]
 atlas = ExtResource("1_6dvki")
@@ -123,6 +127,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2fly")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -264,15 +276,14 @@ script = ExtResource("1_5ry7u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dkjbp")
-animation = &"idle"
+animation = &"dead"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_agfs1")
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
+collision_mask = 4
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_rkhd4")
@@ -285,3 +296,7 @@ volume_db = 4.952
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="GameOverPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
