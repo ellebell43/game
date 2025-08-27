@@ -27,14 +27,19 @@ func _ready() -> void:
 	camera.limit_right = cameraLimitRight
 	camera.limit_left = cameraLimitLeft
 
+func _process(delta: float) -> void:
+	if dead:
+		pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not dead:
 		velocity += get_gravity() * delta
+	elif not is_on_floor():
+		velocity += get_gravity() / 2 * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !Input.is_action_pressed("crouch"):
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not Input.is_action_pressed("crouch") and not dead:
 		#reset idle timer, move up, play a sound, and play an animation
 		idleTimer.start()
 		velocity.y = JUMP_VELOCITY
@@ -51,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	
 	# While a direction is held, move unless crouched
-	if direction and not Input.is_action_pressed("crouch"):
+	if direction and not Input.is_action_pressed("crouch") and not dead:
 		idleTimer.start()
 		if Input.is_action_pressed("sprint"):
 			velocity.x = direction * SPEED * 1.5
@@ -81,12 +86,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	var dead = true
-	if dead :
+func _on_hit_box_body_entered(_body: Node2D) -> void:
+	if not dead:
+		velocity.y = (JUMP_VELOCITY / 2)
 		gameOverPlayer.play()
 		sprite.play("dead")
-		velocity.y = (JUMP_VELOCITY / 2)
-		sprite.modulate = Color(1, 0.5, 0.5)
-		set_process_input(false)
-		worldCollision.disabled = true
+		sprite.modulate = Color(1, 0, 0)
+		
+	dead = true
+	
+	if not worldCollision == null:
+		worldCollision.queue_free()

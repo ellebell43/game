@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://cm2froj38lcf8"]
+[gd_scene load_steps=37 format=3 uid="uid://cm2froj38lcf8"]
 
 [ext_resource type="Script" uid="uid://dkjeeute7d35b" path="res://scenes/actors/character.gd" id="1_5ry7u"]
 [ext_resource type="Texture2D" uid="uid://b1hvtwoq0gtvh" path="res://assets/character/lil-guy.png" id="1_6dvki"]
 [ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_a0mrq"]
+[ext_resource type="AudioStream" uid="uid://bs2by5kgyrplr" path="res://assets/sounds/game-over.wav" id="4_uectf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6eyh6"]
 atlas = ExtResource("1_6dvki")
@@ -290,7 +291,7 @@ shape = SubResource("CircleShape2D_rkhd4")
 
 [node name="JumpAudioPLayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_a0mrq")
-volume_db = 4.952
+volume_db = 5.0
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -298,5 +299,6 @@ one_shot = true
 autostart = true
 
 [node name="GameOverPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uectf")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
