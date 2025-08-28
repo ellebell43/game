@@ -34,14 +34,6 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor():
 		velocity += get_gravity() / 2 * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not Input.is_action_pressed("crouch") and not dead:
-		#reset idle timer, move up, play a sound, and play an animation
-		idleTimer.start()
-		velocity.y = JUMP_VELOCITY
-		jumpPlayer.play()
-		sprite.play("jump")
-
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
 	
@@ -62,9 +54,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, 10)
 	
-	# Animation tree
+	handle_jump()
+	determine_animation()
+	move_and_slide()
+	
+
+func handle_jump():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not Input.is_action_pressed("crouch") and not dead:
+		#reset idle timer, move up, play a sound, and play an animation
+		idleTimer.start()
+		velocity.y = JUMP_VELOCITY
+		jumpPlayer.play()
+		sprite.play("jump")
+
+func determine_animation():
 	if dead:
-		pass
+		sprite.play("dead")
 	elif Input.is_action_pressed("crouch"):
 		sprite.play("crouch")
 	elif velocity.x != 0 and velocity.y == 0:
@@ -79,14 +84,11 @@ func _physics_process(delta: float) -> void:
 	elif velocity.y > 250:
 		sprite.play("fall")
 
-	move_and_slide()
-
 
 func _on_hit_box_body_entered(_body: Node2D) -> void:
 	if not dead:
 		velocity.y = (JUMP_VELOCITY / 2)
 		gameOverPlayer.play()
-		sprite.play("dead")
 		sprite.modulate = Color(1, 0, 0)
 		camera.position = position
 		camera.top_level = true
