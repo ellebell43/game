@@ -1,24 +1,141 @@
-[gd_scene load_steps=6 format=3 uid="uid://4yvns57dt3l7"]
+[gd_scene load_steps=18 format=3 uid="uid://4yvns57dt3l7"]
 
-[ext_resource type="Texture2D" uid="uid://dtbogu4x63st" path="res://assets/character/spear-knight.png" id="1_luedl"]
+[ext_resource type="Script" uid="uid://4gf1yglxb8rq" path="res://scenes/actors/sir_helmet.gd" id="1_0c7jq"]
+[ext_resource type="Texture2D" uid="uid://cy6yjq200g13c" path="res://assets/character/sir-helmet.png" id="1_luedl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rcnm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c7jq"]
 atlas = ExtResource("1_luedl")
-region = Rect2(1, 1, 24, 16)
+region = Rect2(1, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xtoe"]
+atlas = ExtResource("1_luedl")
+region = Rect2(226, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ockn4"]
+atlas = ExtResource("1_luedl")
+region = Rect2(251, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yek6h"]
+atlas = ExtResource("1_luedl")
+region = Rect2(276, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ohl"]
+atlas = ExtResource("1_luedl")
+region = Rect2(301, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grjul"]
+atlas = ExtResource("1_luedl")
+region = Rect2(326, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvaoo"]
+atlas = ExtResource("1_luedl")
+region = Rect2(351, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52of8"]
+atlas = ExtResource("1_luedl")
+region = Rect2(376, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4v6k"]
+atlas = ExtResource("1_luedl")
+region = Rect2(401, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omc84"]
+atlas = ExtResource("1_luedl")
+region = Rect2(426, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3vc4"]
+atlas = ExtResource("1_luedl")
+region = Rect2(451, 1, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adqw8"]
+atlas = ExtResource("1_luedl")
+region = Rect2(476, 1, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_16cde"]
 animations = [{
 "frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_0c7jq")
+}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rcnm")
+"texture": SubResource("AtlasTexture_6xtoe")
+}, {
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_ockn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xtoe")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_0c7jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yek6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ohl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grjul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvaoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52of8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4v6k")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_omc84")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j3vc4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_adqw8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j3vc4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_adqw8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j3vc4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_adqw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4v6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52of8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvaoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grjul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ohl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yek6h")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_0c7jq")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7yx6q"]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tucht"]
 size = Vector2(1, 12)
@@ -26,14 +143,18 @@ size = Vector2(1, 12)
 [node name="SirHelment" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 3
+script = ExtResource("1_0c7jq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_16cde")
+animation = &"idle"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_7yx6q")
 
 [node name="SpearHitBox" type="Area2D" parent="."]
+position = Vector2(0, 4)
 collision_layer = 4
 collision_mask = 3
 
