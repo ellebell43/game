@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://cm2froj38lcf8"]
 
-[ext_resource type="Script" uid="uid://dkjeeute7d35b" path="res://scenes/actors/character.gd" id="1_5ry7u"]
 [ext_resource type="Texture2D" uid="uid://b1hvtwoq0gtvh" path="res://assets/character/lil-guy.png" id="1_6dvki"]
+[ext_resource type="Script" uid="uid://dv5vw1s06x8fu" path="res://scenes/actors/lil guy.gd" id="1_uectf"]
 [ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_a0mrq"]
 [ext_resource type="AudioStream" uid="uid://bs2by5kgyrplr" path="res://assets/sounds/game-over.wav" id="4_uectf"]
 
@@ -234,7 +234,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 32.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -271,13 +271,13 @@ radius = 6.0
 
 [node name="Node2D" type="CharacterBody2D"]
 collision_mask = 2
-script = ExtResource("1_5ry7u")
+script = ExtResource("1_uectf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dkjbp")
-animation = &"walk"
+animation = &"dead"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

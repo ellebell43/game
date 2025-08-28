@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Character
 
 # node references
 @onready var sprite = $AnimatedSprite2D
@@ -28,12 +29,23 @@ func _ready() -> void:
 	camera.limit_left = cameraLimitLeft
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	pass
+
+func handle_gravity(delta: float):
+	# Fall if not on ground, fall slow if dead
 	if not is_on_floor() and not dead:
 		velocity += get_gravity() * delta
 	elif not is_on_floor():
 		velocity += get_gravity() / 2 * delta
-
+	
+	# Slow down and stop
+	velocity.x = move_toward(velocity.x, 0, 10)
+		
+	move_and_slide()
+	
+func process_input():
+	if Input.is_action_just_pressed("menu"):
+		get_tree().reload_current_scene()
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
 	
@@ -50,14 +62,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED * 1.5
 		else:
 			velocity.x = direction * SPEED
-	# If no direction is held, slow down and stop
-	else:
-		velocity.x = move_toward(velocity.x, 0, 10)
-	
-	handle_jump()
-	determine_animation()
-	move_and_slide()
-	
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not Input.is_action_pressed("crouch") and not dead:

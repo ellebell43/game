@@ -148,3 +148,7 @@ cameraLimitRight = 248
 
 [node name="SirHelment" parent="." instance=ExtResource("6_koekj")]
 position = Vector2(93, 67)
+cameraLimitTop = -5000
+cameraLimitBottom = 160
+cameraLimitLeft = -150
+cameraLimitRight = 248

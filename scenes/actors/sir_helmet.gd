@@ -1,24 +1,15 @@
-extends CharacterBody2D
+extends Character
 
-@onready var sprite = $AnimatedSprite2D
-
-
-const SPEED = 150.0
-const JUMP_VELOCITY = -250.0
-
-var direction = 0
-
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("swap character") and PlayerManager._character == 2 and PlayerManager.can_swap:
+		PlayerManager.set_character(1)
+	if PlayerManager._character == 2:
+		camera.make_current()
+		
+	determine_animation()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		
-	if direction > 0:
-		sprite.flip_h = false
-	elif direction < 0:
-		sprite.flip_h = true
-		
-	sprite.play("idle")
-
-	move_and_slide()
+	if PlayerManager._character == 2:
+		process_input()
+		handle_jump()
+	handle_gravity(delta)
