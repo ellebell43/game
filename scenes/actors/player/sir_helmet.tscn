@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://4yvns57dt3l7"]
+[gd_scene load_steps=28 format=3 uid="uid://bphn3b4hqu44w"]
 
-[ext_resource type="Script" uid="uid://4gf1yglxb8rq" path="res://scripts/player/sir_helmet.gd" id="1_0c7jq"]
+[ext_resource type="Script" uid="uid://4gf1yglxb8rq" path="res://scripts/actors/player/sir_helmet.gd" id="1_0c7jq"]
+[ext_resource type="PackedScene" uid="uid://bwgv3e4g8tjpb" path="res://scenes/actors/player/player.tscn" id="1_3osw7"]
 [ext_resource type="Texture2D" uid="uid://dprej11u6h53m" path="res://assets/character/sir-helmet.png" id="1_luedl"]
-[ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_ockn4"]
-[ext_resource type="AudioStream" uid="uid://bs2by5kgyrplr" path="res://assets/sounds/game-over.wav" id="4_yek6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ongml"]
+size = Vector2(1.00004, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4cmme"]
 atlas = ExtResource("1_luedl")
@@ -93,7 +95,7 @@ region = Rect2(81, 0, 26, 26)
 atlas = ExtResource("1_luedl")
 region = Rect2(0, 0, 26, 26)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_16cde"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6us3v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -253,58 +255,22 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7yx6q"]
-radius = 7.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_60nn6"]
-size = Vector2(1.00004, 12)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ockn4"]
-radius = 6.0
-
-[node name="SirHelment" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 3
+[node name="SirHelmet" node_paths=PackedStringArray("sprite") instance=ExtResource("1_3osw7")]
 script = ExtResource("1_0c7jq")
+sprite = NodePath("AnimatedSprite2D")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -6)
-sprite_frames = SubResource("SpriteFrames_16cde")
-animation = &"dead"
-
-[node name="WorldCollision" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_7yx6q")
-
-[node name="SpearHitBox" type="Area2D" parent="."]
+[node name="SpearHitBox" type="Area2D" parent="." index="5"]
 visible = false
 position = Vector2(0, 4)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpearHitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpearHitBox" index="0"]
 visible = false
 position = Vector2(-1, -1.5)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_60nn6")
+shape = SubResource("RectangleShape2D_ongml")
 
-[node name="JumpAudioPLayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ockn4")
-volume_db = 5.0
-
-[node name="IdleTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[node name="GameOverPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_yek6h")
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_ockn4")
-
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+position = Vector2(-1, -7)
+sprite_frames = SubResource("SpriteFrames_6us3v")
+animation = &"dead"

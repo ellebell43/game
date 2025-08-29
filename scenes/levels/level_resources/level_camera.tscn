@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdqigm1glkstd"]
+
+[ext_resource type="Script" uid="uid://dpkb5o8mnog8a" path="res://scripts/levels/level_resources/level_camera.gd" id="1_yei4j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yei4j"]
+radius = 2.0
+
+[node name="LevelCamera" type="Camera2D"]
+script = ExtResource("1_yei4j")
+
+[node name="FocusZone" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FocusZone"]
+shape = SubResource("CircleShape2D_yei4j")
+
+[connection signal="body_entered" from="FocusZone" to="." method="_on_focus_zone_body_entered"]
+[connection signal="body_exited" from="FocusZone" to="." method="_on_focus_zone_body_exited"]
