@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://4yvns57dt3l7"]
 
-[ext_resource type="Script" uid="uid://4gf1yglxb8rq" path="res://scenes/actors/sir_helmet.gd" id="1_0c7jq"]
+[ext_resource type="Script" uid="uid://4gf1yglxb8rq" path="res://scripts/player/sir_helmet.gd" id="1_0c7jq"]
 [ext_resource type="Texture2D" uid="uid://dprej11u6h53m" path="res://assets/character/sir-helmet.png" id="1_luedl"]
 [ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_ockn4"]
 [ext_resource type="AudioStream" uid="uid://bs2by5kgyrplr" path="res://assets/sounds/game-over.wav" id="4_yek6h"]

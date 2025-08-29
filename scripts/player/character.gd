@@ -28,9 +28,6 @@ func _ready() -> void:
 	camera.limit_right = cameraLimitRight
 	camera.limit_left = cameraLimitLeft
 
-func _physics_process(delta: float) -> void:
-	pass
-
 func handle_gravity(delta: float):
 	# Fall if not on ground, fall slow if dead
 	if not is_on_floor() and not dead:
@@ -46,6 +43,7 @@ func handle_gravity(delta: float):
 func process_input():
 	if Input.is_action_just_pressed("menu"):
 		get_tree().reload_current_scene()
+
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
 	

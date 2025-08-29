@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://6x3x6cjvxkks"]
 
-[ext_resource type="PackedScene" uid="uid://cm2froj38lcf8" path="res://scenes/actors/character.tscn" id="1_52kye"]
+[ext_resource type="PackedScene" uid="uid://cm2froj38lcf8" path="res://scenes/actors/player/lil_guy.tscn" id="1_52kye"]
 [ext_resource type="Texture2D" uid="uid://l8pk1xourww1" path="res://assets/tiles/grass-tiles.png" id="1_8153q"]
 [ext_resource type="Texture2D" uid="uid://c4u02h6u8ylwv" path="res://assets/sky.png" id="1_yp2xm"]
 [ext_resource type="Texture2D" uid="uid://dnojbucdoeup1" path="res://assets/tiles/decor.png" id="3_uyl1e"]
 [ext_resource type="Texture2D" uid="uid://b8n2vfb0xldr8" path="res://assets/tiles/hazards.png" id="4_7115g"]
-[ext_resource type="PackedScene" uid="uid://4yvns57dt3l7" path="res://scenes/actors/sir-helmet.tscn" id="6_koekj"]
+[ext_resource type="PackedScene" uid="uid://4yvns57dt3l7" path="res://scenes/actors/player/sir_helmet.tscn" id="6_koekj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52kye"]
 texture = ExtResource("1_8153q")

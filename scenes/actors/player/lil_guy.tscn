@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://cm2froj38lcf8"]
 
 [ext_resource type="Texture2D" uid="uid://b1hvtwoq0gtvh" path="res://assets/character/lil-guy.png" id="1_6dvki"]
-[ext_resource type="Script" uid="uid://dv5vw1s06x8fu" path="res://scenes/actors/lil guy.gd" id="1_uectf"]
+[ext_resource type="Script" uid="uid://dv5vw1s06x8fu" path="res://scripts/player/lil_guy.gd" id="1_uectf"]
 [ext_resource type="AudioStream" uid="uid://12er34jykeur" path="res://assets/sounds/jump.wav" id="3_a0mrq"]
 [ext_resource type="AudioStream" uid="uid://bs2by5kgyrplr" path="res://assets/sounds/game-over.wav" id="4_uectf"]
 
