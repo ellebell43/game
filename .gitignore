@@ -51,4 +51,7 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+# VS Code settings
+.vscode
+
 # End of https://www.toptal.com/developers/gitignore/api/godot,macos
