@@ -25,8 +25,8 @@ PlayerManager="*res://scripts/actors/player/player_manager.gd"
 
 [display]
 
-window/size/viewport_width=284
-window/size/viewport_height=160
+window/size/viewport_width=568
+window/size/viewport_height=320
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
